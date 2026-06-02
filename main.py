@@ -20,21 +20,3 @@ def get_random_user():
         "company": fake.company(),
         "job": fake.job(),
     }
-
-@app.get("/company")
-def get_random_company():
-    return {
-        "company": fake.company(),
-        "industry": fake.bs(),
-        "website": fake.url(),
-        "address": fake.address(),
-    }    
-
-
-@app.get("/product")
-def get_random_product():
-    return {
-        "product_name": fake.word(),
-        "price": round(fake.random_number(digits=3) + 0.99, 2),
-        "description": fake.sentence(),
-    }
