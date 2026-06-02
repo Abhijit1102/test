@@ -20,3 +20,12 @@ def get_random_user():
         "company": fake.company(),
         "job": fake.job(),
     }
+
+@app.get("/company")
+def get_random_company():
+    return {
+        "company": fake.company(),
+        "industry": fake.bs(),
+        "website": fake.url(),
+        "address": fake.address(),
+    }    
