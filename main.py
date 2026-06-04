@@ -33,3 +33,14 @@ def get_random_company():
     }
 
 
+@app.get("/location")
+def get_random_location():
+    return {
+        "city": fake.city(),
+        "state": fake.state(),
+        "country": fake.country(),
+        "latitude": float(fake.latitude()),
+        "longitude": float(fake.longitude()),
+        "zipcode": fake.postcode(),
+        "street_address": fake.street_address(),
+    }
