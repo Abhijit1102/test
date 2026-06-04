@@ -33,23 +33,3 @@ def get_random_company():
     }
 
 
-@app.get("/product")
-def get_random_product():
-    categories = [
-        "Electronics",
-        "Books",
-        "Clothing",
-        "Furniture",
-        "Sports",
-        "Beauty"
-    ]
-
-    return {
-        "id": fake.uuid4(),
-        "name": fake.word().title() + " " + fake.word().title(),
-        "category": random.choice(categories),
-        "price": round(random.uniform(10, 5000), 2),
-        "description": fake.sentence(),
-        "brand": fake.company(),
-        "stock": random.randint(0, 100),
-    }
