@@ -5,6 +5,32 @@ import random
 app = FastAPI()
 fake = Faker()
 
+PRODUCT_CATEGORIES = [
+    "Laptop",
+    "Smartphone",
+    "Headphones",
+    "Keyboard",
+    "Mouse",
+    "Monitor",
+    "Smartwatch",
+    "Camera",
+    "Tablet",
+    "Gaming Console",
+]
+
+BRANDS = [
+    "Apple",
+    "Samsung",
+    "Sony",
+    "Dell",
+    "HP",
+    "Lenovo",
+    "Asus",
+    "Logitech",
+    "Microsoft",
+    "Acer",
+]
+
 
 @app.get("/")
 def home():
@@ -43,4 +69,23 @@ def get_random_location():
         "longitude": float(fake.longitude()),
         "zipcode": fake.postcode(),
         "street_address": fake.street_address(),
+    }
+
+
+@app.get("/product")
+def get_random_product():
+    brand = random.choice(BRANDS)
+    category = random.choice(PRODUCT_CATEGORIES)
+
+    return {
+        "id": fake.uuid4(),
+        "name": f"{brand} {category}",
+        "brand": brand,
+        "category": category,
+        "price": round(random.uniform(50, 5000), 2),
+        "currency": "USD",
+        "sku": fake.bothify(text="???-#####"),
+        "in_stock": random.choice([True, False]),
+        "rating": round(random.uniform(1, 5), 1),
+        "description": fake.sentence(),
     }
