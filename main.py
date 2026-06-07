@@ -66,51 +66,6 @@ def get_random_location():
         "street_address": fake.street_address(),
     }
 
-@app.get("/product")
-def get_random_product():
-    return {
-        "id": fake.uuid4(),
-        "name": fake.catch_phrase(),
-        "brand": random.choice(BRANDS),
-        "category": random.choice(PRODUCT_CATEGORIES),
-        "price": round(random.uniform(9.99, 999.99), 2),
-        "rating": round(random.uniform(1.0, 5.0), 1),
-        "stock": random.randint(0, 500),
-        "sku": fake.bothify(text="SKU-#####"),
-        "description": fake.text(max_nb_chars=200),
-    }
 
 
-    products = []
-
-    for _ in range(count):
-        products.append({
-            "id": fake.uuid4(),
-            "name": fake.catch_phrase(),
-            "brand": random.choice(BRANDS),
-            "category": random.choice(PRODUCT_CATEGORIES),
-            "price": round(random.uniform(9.99, 999.99), 2),
-            "rating": round(random.uniform(1.0, 5.0), 1),
-            "stock": random.randint(0, 500),
-            "sku": fake.bothify(text="SKU-#####"),
-        })
-
-    return {
-        "count": count,
-        "products": products
-    }
-    brand = random.choice(BRANDS)
-    category = random.choice(PRODUCT_CATEGORIES)
-
-    return {
-        "id": fake.uuid4(),
-        "name": f"{brand} {category}",
-        "brand": brand,
-        "category": category,
-        "price": round(random.uniform(50, 5000), 2),
-        "currency": "USD",
-        "sku": fake.bothify(text="???-#####"),
-        "in_stock": random.choice([True, False]),
-        "rating": round(random.uniform(1, 5), 1),
-        "description": fake.sentence(),
-    }
+ 
