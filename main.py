@@ -6,30 +6,25 @@ app = FastAPI()
 fake = Faker()
 
 PRODUCT_CATEGORIES = [
-    "Laptop",
-    "Smartphone",
-    "Headphones",
-    "Keyboard",
-    "Mouse",
-    "Monitor",
-    "Smartwatch",
-    "Camera",
-    "Tablet",
-    "Gaming Console",
+    "Electronics",
+    "Books",
+    "Clothing",
+    "Home & Kitchen",
+    "Sports",
+    "Beauty",
+    "Toys",
 ]
 
 BRANDS = [
-    "Apple",
-    "Samsung",
-    "Sony",
-    "Dell",
-    "HP",
-    "Lenovo",
-    "Asus",
-    "Logitech",
-    "Microsoft",
-    "Acer",
+    "TechPro",
+    "SmartLife",
+    "EcoPlus",
+    "Nova",
+    "PrimeGear",
+    "UltraMax",
 ]
+
+
 
 
 @app.get("/")
@@ -71,9 +66,41 @@ def get_random_location():
         "street_address": fake.street_address(),
     }
 
-
 @app.get("/product")
 def get_random_product():
+    return {
+        "id": fake.uuid4(),
+        "name": fake.catch_phrase(),
+        "brand": random.choice(BRANDS),
+        "category": random.choice(PRODUCT_CATEGORIES),
+        "price": round(random.uniform(9.99, 999.99), 2),
+        "rating": round(random.uniform(1.0, 5.0), 1),
+        "stock": random.randint(0, 500),
+        "sku": fake.bothify(text="SKU-#####"),
+        "description": fake.text(max_nb_chars=200),
+    }
+
+
+@app.get("/products/{count}")
+def get_products(count: int):
+    products = []
+
+    for _ in range(count):
+        products.append({
+            "id": fake.uuid4(),
+            "name": fake.catch_phrase(),
+            "brand": random.choice(BRANDS),
+            "category": random.choice(PRODUCT_CATEGORIES),
+            "price": round(random.uniform(9.99, 999.99), 2),
+            "rating": round(random.uniform(1.0, 5.0), 1),
+            "stock": random.randint(0, 500),
+            "sku": fake.bothify(text="SKU-#####"),
+        })
+
+    return {
+        "count": count,
+        "products": products
+    }
     brand = random.choice(BRANDS)
     category = random.choice(PRODUCT_CATEGORIES)
 
