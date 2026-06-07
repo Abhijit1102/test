@@ -81,8 +81,6 @@ def get_random_product():
     }
 
 
-@app.get("/products/{count}")
-def get_products(count: int):
     products = []
 
     for _ in range(count):
