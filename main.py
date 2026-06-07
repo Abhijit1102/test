@@ -75,6 +75,7 @@ def get_random_product():
         "category": random.choice(PRODUCT_CATEGORIES),
         "price": round(random.uniform(9.99, 999.99), 2),
         "rating": round(random.uniform(1.0, 5.0), 1),
+        "stock": random.randint(0, 500),
         "sku": fake.bothify(text="SKU-#####"),
         "description": fake.text(max_nb_chars=200),
     }
