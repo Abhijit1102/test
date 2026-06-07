@@ -80,6 +80,7 @@ def get_random_product():
         "description": fake.text(max_nb_chars=200),
     }
 
+
     products = []
 
     for _ in range(count):
