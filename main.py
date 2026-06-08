@@ -5,6 +5,12 @@ import random
 app = FastAPI()
 fake = Faker()
 
+
+@app.get("/")
+def home():
+    return {"message": "Random User API"}
+
+
 @app.get("/user")
 def get_random_user():
     return {
