@@ -9,7 +9,6 @@ fake = Faker()
 def home():
     return {"message": "Random User API"}
 
-
 @app.get("/user")
 def get_random_user():
     return {
@@ -21,9 +20,31 @@ def get_random_user():
         "job": fake.job(),
     }
 
+# Generate multiple users
+@app.get("/users/{count}")
+def get_multiple_users(count: int):
+    return {
+        "users": [
+            {
+                "name": fake.name(),
+                "email": fake.email(),
+                "company": fake.company(),
+            }
+            for _ in range(count)
+        ]
+    }
 
-
-
-
-
- 
+# Detailed profile endpoint
+@app.get("/user/profile")
+def get_user_profile():
+    return {
+        "name": fake.name(),
+        "username": fake.user_name(),
+        "email": fake.email(),
+        "age": random.randint(18, 65),
+        "phone": fake.phone_number(),
+        "address": fake.address(),
+        "company": fake.company(),
+        "job": fake.job(),
+        "website": fake.url(),
+    }
