@@ -5,6 +5,27 @@ import random
 app = FastAPI()
 fake = Faker()
 
+PRODUCT_CATEGORIES = [
+    "Electronics",
+    "Books",
+    "Clothing",
+    "Home & Kitchen",
+    "Sports",
+    "Beauty",
+    "Toys",
+]
+
+BRANDS = [
+    "TechPro",
+    "SmartLife",
+    "EcoPlus",
+    "Nova",
+    "PrimeGear",
+    "UltraMax",
+]
+
+
+
 
 @app.get("/")
 def home():
