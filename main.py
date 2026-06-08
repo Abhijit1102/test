@@ -5,6 +5,27 @@ import random
 app = FastAPI()
 fake = Faker()
 
+PRODUCT_CATEGORIES = [
+    "Electronics",
+    "Books",
+    "Clothing",
+    "Home & Kitchen",
+    "Sports",
+    "Beauty",
+    "Toys",
+]
+
+BRANDS = [
+    "TechPro",
+    "SmartLife",
+    "EcoPlus",
+    "Nova",
+    "PrimeGear",
+    "UltraMax",
+]
+
+
+
 
 @app.get("/")
 def home():
@@ -20,6 +41,16 @@ def get_random_user():
         "address": fake.address(),
         "company": fake.company(),
         "job": fake.job(),
+    }
+
+
+@app.get("/company")
+def get_random_company():
+    return {
+        "company": fake.company(),
+        "industry": fake.bs(),
+        "website": fake.url(),
+        "address": fake.address(),
     }
 
 
