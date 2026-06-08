@@ -17,7 +17,8 @@ def get_random_user():
         "email": fake.email(),
         "phone": fake.phone_number(),
         "address": fake.address(),
-        "company": fake.company()
+        "company": fake.company(),
+        "job": fake.job(),
     }
 
 
