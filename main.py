@@ -34,3 +34,17 @@ def get_multiple_users(count: int):
         ]
     }
 
+# Detailed profile endpoint
+@app.get("/user/profile")
+def get_user_profile():
+    return {
+        "name": fake.name(),
+        "username": fake.user_name(),
+        "email": fake.email(),
+        "age": random.randint(18, 65),
+        "phone": fake.phone_number(),
+        "address": fake.address(),
+        "company": fake.company(),
+        "job": fake.job(),
+        "website": fake.url(),
+    }
