@@ -44,16 +44,6 @@ def get_random_user():
     }
 
 
-@app.get("/company")
-def get_random_company():
-    return {
-        "company": fake.company(),
-        "industry": fake.bs(),
-        "website": fake.url(),
-        "address": fake.address(),
-    }
-
-
 
 
 
