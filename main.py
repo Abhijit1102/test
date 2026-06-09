@@ -17,20 +17,6 @@ def get_random_user():
         "phone": fake.phone_number(),
         "address": fake.address(),
         "company": fake.company(),
-        "job": fake.job(),
     }
 
-# Generate multiple users
-@app.get("/users/{count}")
-def get_multiple_users(count: int):
-    return {
-        "users": [
-            {
-                "name": fake.name(),
-                "email": fake.email(),
-                "company": fake.company(),
-            }
-            for _ in range(count)
-        ]
-    }
 
