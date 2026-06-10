@@ -19,18 +19,3 @@ def get_random_user():
         "job": fake.job(),
     }
 
-@app.get("/users")
-def get_multiple_users(count: int = 5):
-    return {
-        "users": [
-            {
-                "name": fake.name(),
-                "email": fake.email(),
-                "phone": fake.phone_number(),
-                "address": fake.address(),
-                "company": fake.company(),
-                "job": fake.job(),
-            }
-            for _ in range(count)
-        ]
-    }
