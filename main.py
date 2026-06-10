@@ -19,3 +19,17 @@ def get_random_user():
         "company": fake.company(),
     }
 
+@app.get("/users")
+def get_random_users(count: int = 5):
+    return {
+        "users": [
+            {
+                "name": fake.name(),
+                "email": fake.email(),
+                "phone": fake.phone_number(),
+                "address": fake.address(),
+                "company": fake.company(),
+            }
+            for _ in range(count)
+        ]
+    }
